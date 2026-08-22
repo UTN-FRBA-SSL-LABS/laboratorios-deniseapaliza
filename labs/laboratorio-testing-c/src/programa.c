@@ -2,14 +2,15 @@
 #include "carrito.h"
 
 int main(void) {
-    Carrito c;
-    carrito_init(&c);
+    Carrito c; // creamos un struct Carrito en donde la cantidad es los productos actuales
+    carrito_init(&c); // lo iniicializamos es decir ponemos su cantidad en 0 
+    // defino 3 productos de los cuales
+    Producto leche = {"Leche",   350, 2}; // 2 Cantidad de leche 
+    Producto pan   = {"Pan",     200, 3}; // 3 cant de pan
+    Producto queso = {"Queso", 1500, 1}; // 1 cant queso
+// Excede la cantidad max de items, hay 6 
 
-    Producto leche = {"Leche",   350, 2};
-    Producto pan   = {"Pan",     200, 3};
-    Producto queso = {"Queso", 1500, 1};
-
-    carrito_agregar(&c, leche);
+    carrito_agregar(&c, leche);// llamamos la fucnion y le pasamos el carrito y la leche
     carrito_agregar(&c, pan);
     carrito_agregar(&c, queso);
 

@@ -5,8 +5,8 @@ void carrito_init(Carrito *c) {
     c->cantidad = 0;
 }
 
-int carrito_agregar(Carrito *c, Producto p) {
-    if (c->cantidad <= MAX_ITEMS) {   /* BUG: deberia ser < MAX_ITEMS */
+int carrito_agregar(Carrito *c, Producto p) { 
+    if (c->cantidad <= MAX_ITEMS) {   /* BUG: deberia ser < MAX_ITEMS */ // cantidad hay 0, la primera vuelta
         c->items[c->cantidad] = p;
         c->cantidad++;
         return 1;
@@ -21,7 +21,7 @@ int carrito_contar(Carrito *c) {
 int carrito_total(Carrito *c) {
     int total = 0;
     for (int i = 0; i < c->cantidad; i++) {
-        total += c->items[i].precio;  /* BUG: falta multiplicar por cantidad */
+        total += c->items[i].precio * c->items[i].cantidad;  /* BUG: falta multiplicar por cantidad */
     }
     return total;
 }
