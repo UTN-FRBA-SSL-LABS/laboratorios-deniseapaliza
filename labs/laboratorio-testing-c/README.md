@@ -74,14 +74,14 @@ Vas a ver el carrito con tres productos y su total.
 
 **P1** — Calculá a mano el total esperado: Leche ($350 x2) + Pan ($200 x3) + Queso ($1500 x1).
 
-> R: 2800
+> R:2800
 
 **P2** — ¿El total que imprime el programa coincide con lo que calculaste? Si no coincide, ¿cuánto muestra?
 
-> R: NO
+> R:NO
 
 ```
-TOTAL_PROGRAMA= 2050
+TOTAL_PROGRAMA=2050
 ```
 _(escribí el número que imprimió el programa)_
 
@@ -254,18 +254,18 @@ Descomentá `/* test_carrito_lleno(); */` en el `main()`, compilá y corré.
 
 **P8** — ¿El test pasa o falla? Si falla, ¿qué devuelve ese 5to `carrito_agregar`?
 
-> R:
+> R: El test falla, devuelve 1 y se espera 0 
 
 Si el test falló, encontraste el segundo bug. Buscá en `src/carrito.c` la condición del `if` dentro de `carrito_agregar`.
 
 **P9** — ¿Cuál es el operador incorrecto y cuál debería ser?
 
-> R:
+> R: el operador incorrecto es el igual, solo hay que dejar el menor
 
 Corregí el bug, volvé a compilar y verificá que todos los tests pasan.
 
 ```
-BUG_2_CORREGIDO=
+BUG_2_CORREGIDO=SI
 ```
 _(SI o NO)_
 
@@ -301,7 +301,7 @@ cat salidas/test_integracion.txt
 ```
 
 ```
-TEST_INTEGRACION_PASA=
+TEST_INTEGRACION_PASA=SI
 ```
 _(SI o NO)_
 
@@ -319,7 +319,7 @@ Escribí `test_agregar_hasta_llenar()` en el lugar `/* PARTE E */`. Este test de
 Descomentá `/* test_agregar_hasta_llenar(); */` en el `main()`, compilá y corré.
 
 ```
-TEST_LLENAR_PASA=
+TEST_LLENAR_PASA=SI
 ```
 _(SI o NO)_
 
@@ -338,10 +338,10 @@ Las líneas con `#####` nunca se ejecutaron — no están cubiertas por los test
 
 **P10** — ¿Hay alguna línea de `carrito.c` con `#####`? ¿Cuál y por qué no se ejecutó?
 
-> R:
+> R: Sí, la línea 29 y 30. No se ejecutó porque no está considerando el archivo test_integracion donde sí se usó, solo verifica el test_unitario
 
 ```
-COBERTURA_COMPLETA=
+COBERTURA_COMPLETA=NO
 ```
 _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
@@ -351,27 +351,27 @@ _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
 **P11** — ¿Qué diferencia hay entre un test unitario y uno de integración? ¿Cuál de los dos detectó primero el bug de `carrito_total`?
 
-> R:
+> R: El test de integracion verifica antes el bug de carrito total ya que el primer test que aparece, es decir, el de test_compra_con_descuento cuenta con una cantidad mayor a uno detectando rapidamente el bug, en cambio, el test unitario comienza sus test con productos de cantidad 1. Concluimos que la diferencia de un test a otro es en la cantidad de productos en un carrito.
 
 **P12** — El bug de capacidad en `carrito_agregar` causa un **buffer overflow**: se escribe más allá del array. ¿Por qué esto es peligroso en C pero no ocurriría en un lenguaje como Python o Java?
 
-> R:
+> R: Porque estariamos ocupando un lugar de memoria el cual nunca se reservo, estariamos sobreescribiendo un espacio de memoria el cual no deberiamos tener acceso. Phyton y Java, en cambio, no sobreescribe sino que devuelve un mensaje de error.
 
 **P13** — En este laboratorio encontraste los bugs escribiendo tests. ¿Qué tiene de mejor este enfoque frente a mirar el código directamente?
 
-> R:
+> R: A la hora de tener un programa extenso, es dificil encontrar estos tipos de errores manualmente. Por eso es mejor contar con un test que permita "automatizar", encontrar errores haciendo una diferencia de lo que deberiamos esperar de cierta funcion y lo que realmente recibimos, permitiendonos saber que funcion esta generando conflictos
 
 **P14** — El test `test_total_precio_unitario` (cantidad = 1) **pasó** a pesar del bug, mientras que `test_total_con_cantidad` (cantidad = 2) **falló**. ¿Por qué el primer test no detectó el bug?
 
-> R:
+> R: porque el primer test solo contaba con cantidad uno y eso no traia problemas en la funcion carrito_total ya que el for entraba una vez y no hacia falta multiplicar el precio por la cantidad de ese producto ya que el neutro en la multiplicacion es 1. En cambio, al tener una cantidad mayor que uno, si traia problemas ya que el precio debia ser multiplicado por la cantidad del producto.
 
 ```
-BUG_EN_FUNCION_1=
+BUG_EN_FUNCION_1=carrito_total
 ```
 _(nombre de la función con el primer bug)_
 
 ```
-BUG_EN_FUNCION_2=
+BUG_EN_FUNCION_2=carrito_agregar
 ```
 _(nombre de la función con el segundo bug)_
 

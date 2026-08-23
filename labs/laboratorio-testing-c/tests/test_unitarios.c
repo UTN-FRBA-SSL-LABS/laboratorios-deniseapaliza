@@ -58,34 +58,16 @@ void test_carrito_lleno (void) {
 
     Carrito c;
     carrito_init(&c);
-    Producto leche = {"Leche", 350, 4};
-    Producto pan = {"Pan", 200, 1};
+    Producto leche = {"Leche", 350, 1};
     carrito_agregar(&c, leche);
-    carrito_agregar(&c, pan);
-    ASSERT_IGUAL(0, carrito_total(&c));
-
+    carrito_agregar(&c, leche);
+    carrito_agregar(&c, leche);
+    carrito_agregar(&c, leche);
+    ASSERT_IGUAL(0, carrito_agregar(&c, leche));
 
 }
     
 
-
- /* ═══════════════════════════════════════════════════════════════════════════
- *  PARTE D — Escribir un test propio (ver README.md, Parte 7)
- * ═══════════════════════════════════════════════════════════════════════════ 
-void test_carrito_lleno(void){
-    Carrito c;
-    carrito_init(&c);
-    Producto pan = {"Pan", 200, 3};
-    Producto leche = {"Leche", 350, 2};
-    carrito_agregar(&c, pan);
-    carrito_agregar(&c, leche);
-    //carrito_total(&c);
-    carrito_descuento(carrito_total(&c), 10);
-    ASSERT_IGUAL(1300,  carrito_total(&c));
-    ASSERT_IGUAL(1170, carrito_descuento(carrito_total(&c), 10));
-
-}
-  */
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
